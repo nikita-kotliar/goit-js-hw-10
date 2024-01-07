@@ -61,6 +61,8 @@ const secondsTimer = document.querySelector('[data-seconds]');
 let intervalId;
 
 button.addEventListener('click', () => {
+  input.classList.add('not-clickable');
+  button.disabled = true;
   clearInterval(intervalId);
   const nowDate = new Date().getTime();
   const userDate = userSelectedDate.getTime();
@@ -77,6 +79,7 @@ button.addEventListener('click', () => {
       secondsTimer.textContent = addLeadingZero(convertedTime.seconds);
     } else {
       clearInterval(intervalId);
+      input.classList.remove('not-clickable');
     }
   }, 1000);
 });
